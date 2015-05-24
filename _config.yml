@@ -5,7 +5,7 @@ highlighter: pygments
 permalink: :title
 exclude: [README.md, LICENSE, Makefile]
 
-# Information for the Atom feed
-gereksiz:
-   author: "Maarten Steenhagen"
-   email: "m.steenhagen.09@ucl.ac.uk"
+baseurl: lectito
+
+author: "Maarten Steenhagen"
+email: "m.steenhagen.09@ucl.ac.uk"
