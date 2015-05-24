@@ -6,80 +6,53 @@ title: Lectito
 <body>
 <div id="home">
 
+	<div class="list">
 	<h1>Read(ing)</h1>
-	{% for reading in site.data.readings %}
-	{% if reading.start == "" %}
-	{% else %}
-	   <div style="padding-bottom: 0px;">
-		   	{{ reading.author }}, 
-		   	{% if reading.notes == "" %}
-		   		{{ reading.title }}
-		   	{% else %}
-		   		<span style="color:blue;" title="{{ reading.notes }}">{{ reading.title }}</span>
-		   	{% endif %}
-		   	</br>
-	   	</div>
-	   	<div style="text-transform: lowercase;font-variant: small-caps;padding-top: 0px;padding-bottom: 5px;">
-		   	<small>
-					{% if reading.finish %}
-			   			<i class="fa fa-check-circle-o"> ({{ reading.start | date: "%-d %B" }} - {{ reading.finish | date: "%-d %B %Y" }})</i>
-			   		{% else %}
-			   			<i class="fa fa-circle-thin"> ({{ reading.start | date: "%-d %B %Y" }})</i>
-			   		{% endif %}
-			   		{{ reading.citekey }}	
-		   	</small>
-	   </div>
-	{% endif %}
-	{% endfor %}
-
-	<hr>
-
-	<h1>Read(ing)</h1>
-	{% for reading in site.data.readings %}
-	{% if reading.start == "" %}
-	{% else %}
-	   <div style="padding-bottom: 0px;">
-	   		{% if reading.finish %}
-					<span style="color:green;" title="{{ reading.start | date: "%-d %B" }} to {{ reading.finish | date: "%-d %B %Y" }}">
-			   			<i class="fa fa-check-circle-o"></i>
-			   		</span>
+		{% for reading in site.data.readings %}
+		{% if reading.start == "" %}
+		{% else %}
+		   <div style="padding-bottom: 0px;">
+		   		{% if reading.finish %}
+						<span style="color:green;" title="{{ reading.start | date: "%-d %B" }} to {{ reading.finish | date: "%-d %B %Y" }}">
+				   			<i class="fa fa-check-circle-o"></i>
+				   		</span>
+				   	{% else %}
+				   		<span style="color:grey;" title="Started on {{ reading.start | date: "%-d %B %Y" }}">
+				   			<i class="fa fa-circle-thin"></i>
+				   		</span>
+				{% endif %}
+			   	{{ reading.author }}, 
+			   	{% if reading.notes == "" %}
+			   		{{ reading.title }}
 			   	{% else %}
-			   		<span style="color:green;" title="Started on {{ reading.start | date: "%-d %B %Y" }}">
-			   			<i class="fa fa-circle-thin"></i>
-			   		</span>
-			{% endif %}
-		   	{{ reading.author }}, 
-		   	{% if reading.notes == "" %}
-		   		{{ reading.title }}
-		   	{% else %}
-		   		<span style="color:blue;" title="{{ reading.notes }}">{{ reading.title }}</span>
-		   	{% endif %}
-	   	</div>
-	{% endif %}
-	{% endfor %}
-
+			   		<span style="text-decoration:underline;" title="{{ reading.notes }}">{{ reading.title }}</span>
+			   	{% endif %}
+		   	</div>
+		{% endif %}
+		{% endfor %}
+	</div>
+	
 	<hr>
 
-	<h1>To read</h1>
-	{% for reading in site.data.readings %}
-	{% if reading.start == "" %}
-	   <div style="padding-bottom: 0px;">
-		   	{{ reading.author }}, 
-		   	{% if reading.notes == "" %}
-		   		{{ reading.title }}
-		   	{% else %}
-		   		<span style="color:blue;" title="{{ reading.notes }}">{{ reading.title }}</span>
-		   	{% endif %}
-		   	</br>
-	   	</div>
-	   	<div style="text-transform: lowercase;font-variant: small-caps;padding-top: 0px;padding-bottom: 5px;">
-		   	<small>
-		   	<i class="fa fa-clock-o"> {{ reading.date | date_to_string }}</i> {{ reading.citekey }}
-		   	</small>
-	   </div>
-	{% else %}
-	{% endif %}
-	{% endfor %}
+	<div class="list">
+		<h1>To read</h1>
+		{% for reading in site.data.readings %}
+		{% if reading.start == "" %}
+		   <div style="padding-bottom: 0px;">
+		   		<span style="color:grey;" title="Added on {{ reading.date | date: "%-d %B %Y" }}">
+					<i class="fa fa-clock-o"></i>
+				</span>
+			   	{{ reading.author }}, 
+			   	{% if reading.notes == "" %}
+			   		{{ reading.title }}
+			   	{% else %}
+			   		<span style="color:blue;" title="{{ reading.notes }}">{{ reading.title }}</span>
+			   	{% endif %}
+		   	</div>
+		{% else %}
+		{% endif %}
+		{% endfor %}
+	</div>
 
 </div>
 
