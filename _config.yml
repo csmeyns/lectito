@@ -5,7 +5,7 @@ highlighter: pygments
 permalink: :title
 exclude: [README.md, LICENSE, Makefile]
 
-baseurl: /
+baseurl: lectito/
 
 author: "Maarten Steenhagen"
 email: "m.steenhagen.09@ucl.ac.uk"
