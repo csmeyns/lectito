@@ -1,0 +1,63 @@
+---
+layout: default
+title: Lectito
+---
+
+<body>
+<div id="home">
+
+	<h1>Read(ing)</h1>
+	{% for reading in site.data.readings %}
+	{% if reading.start == "" %}
+	{% else %}
+	   <div style="padding-bottom: 0px;">
+		   	{{ reading.author }}, 
+		   	{% if reading.notes == "" %}
+		   		{{ reading.title }}
+		   	{% else %}
+		   		<span style="color:blue;" title="{{ reading.notes }}">{{ reading.title }}</span>
+		   	{% endif %}
+		   	</br>
+	   	</div>
+	   	<div style="text-transform: lowercase;font-variant: small-caps;padding-top: 0px;padding-bottom: 5px;">
+		   	<small>
+					{% if reading.finish %}
+			   			<i class="fa fa-check-circle-o"> ({{ reading.start | date: "%-d %B" }} - {{ reading.finish | date: "%-d %B %Y" }})</i>
+			   		{% else %}
+			   			<i class="fa fa-circle-thin"> ({{ reading.start | date: "%-d %B %Y" }})</i>
+			   		{% endif %}
+			   		{{ reading.citekey }}	
+		   	</small>
+	   </div>
+	{% endif %}
+	{% endfor %}
+
+	<hr>
+	<h1>To read</h1>
+	{% for reading in site.data.readings %}
+	{% if reading.start == "" %}
+	   <div style="padding-bottom: 0px;">
+		   	{{ reading.author }}, 
+		   	{% if reading.notes == "" %}
+		   		{{ reading.title }}
+		   	{% else %}
+		   		<span style="color:blue;" title="{{ reading.notes }}">{{ reading.title }}</span>
+		   	{% endif %}
+		   	</br>
+	   	</div>
+	   	<div style="text-transform: lowercase;font-variant: small-caps;padding-top: 0px;padding-bottom: 5px;">
+		   	<small>
+		   	<i class="fa fa-clock-o"> {{ reading.date | date_to_string }}</i> {{ reading.citekey }}
+		   	</small>
+	   </div>
+	{% else %}
+	{% endif %}
+	{% endfor %}
+
+</div>
+
+	<h1 class="title">
+		<a href="http://github.com/msteenhagen/lectito"><i class="fa fa-github"></i></a>
+	</h1>
+
+</body>
