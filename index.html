@@ -6,7 +6,7 @@ title: Lectito
 <body>
 <div id="home">
 
-	<div class="list">
+	<div class="list" style="padding-bottom: 20px;">
 	<h1>Read(ing)</h1>
 		{% for reading in site.data.readings %}
 		{% if reading.start == "" %}
@@ -34,7 +34,7 @@ title: Lectito
 	
 	<hr>
 
-	<div class="list">
+	<div class="list" style="padding-bottom: 20px;">
 		<h1>To read</h1>
 		{% for reading in site.data.readings %}
 		{% if reading.start == "" %}
