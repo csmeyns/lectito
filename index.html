@@ -23,9 +23,9 @@ title: Lectito
 				{% endif %}
 			   	{{ reading.author }}, 
 			   	{% if reading.notes == "" %}
-			   		{{ reading.title }}
+			   		<span title="{{ reading.citekey }}">{{ reading.title }}</span>
 			   	{% else %}
-			   		<span style="text-decoration:underline;" title="{{ reading.notes }}">{{ reading.title }}</span>
+			   		<span style="text-decoration:underline;" title="{{ reading.citekey }}: {{ reading.notes }}">{{ reading.title }}</span>
 			   	{% endif %}
 		   	</div>
 		{% endif %}
@@ -44,9 +44,9 @@ title: Lectito
 				</span>
 			   	{{ reading.author }}, 
 			   	{% if reading.notes == "" %}
-			   		{{ reading.title }}
+			   		<span title="{{ reading.citekey }}">{{ reading.title }}</span>
 			   	{% else %}
-			   		<span style="color:blue;" title="{{ reading.notes }}">{{ reading.title }}</span>
+			   		<span style="text-decoration:underline;" title="{{ reading.citekey }}: {{ reading.notes }}">{{ reading.title }}</span>
 			   	{% endif %}
 		   	</div>
 		{% else %}
